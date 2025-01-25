@@ -1,0 +1,76 @@
+{% extends 'InspiBook/base.html' %}
+
+{% block title %}Créer un Compte{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Créer un Compte</h2>
+    
+    <!-- Afficher les messages de succès ou d'erreur -->
+    {% if messages %}
+    <div class="mb-3">
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Formulaire d'inscription -->
+    <form method="POST" class="card p-4 shadow">
+        {% csrf_token %}
+        
+        <div class="row">
+            <!-- Nom -->
+            <div class="col-md-6 mb-3">
+                <label for="id_nom" class="form-label">Nom</label>
+                <input type="text" name="nom" id="id_nom" class="form-control" value="{{ form.nom.value|default_if_none:'' }}" required>
+                <small class="text-danger">{{ form.nom.errors|join:', ' }}</small>
+            </div>
+            
+            <!-- Prénom -->
+            <div class="col-md-6 mb-3">
+                <label for="id_prenom" class="form-label">Prénom</label>
+                <input type="text" name="prenom" id="id_prenom" class="form-control" value="{{ form.prenom.value|default_if_none:'' }}" required>
+                <small class="text-danger">{{ form.prenom.errors|join:', ' }}</small>
+            </div>
+        </div>
+
+        <!-- Numéro de téléphone -->
+        <div class="mb-3">
+            <label for="id_numero_telephone" class="form-label">Numéro de Téléphone</label>
+            <input type="text" name="numero_telephone" id="id_numero_telephone" class="form-control" value="{{ form.numero_telephone.value|default_if_none:'' }}" required>
+            <small class="text-danger">{{ form.numero_telephone.errors|join:', ' }}</small>
+        </div>
+
+        <!-- Nom d'utilisateur -->
+        <div class="mb-3">
+            <label for="id_username" class="form-label">Nom d'Utilisateur</label>
+            <input type="text" name="username" id="id_username" class="form-control" value="{{ form.username.value|default_if_none:'' }}" required>
+            <small class="text-danger">{{ form.username.errors|join:', ' }}</small>
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="id_password1" class="form-label">Mot de Passe</label>
+                <input type="password" name="password1" id="id_password1" class="form-control" required>
+                <small class="text-danger">{{ form.password1.errors|join:', ' }}</small>
+            </div>
+            
+            <!-- Confirmation du mot de passe -->
+            <div class="col-md-6 mb-3">
+                <label for="id_password2" class="form-label">Confirmez le Mot de Passe</label>
+                <input type="password" name="password2" id="id_password2" class="form-control" required>
+                <small class="text-danger">{{ form.password2.errors|join:', ' }}</small>
+            </div>
+        </div>
+
+        <!-- Bouton de soumission -->
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Créer un Compte</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

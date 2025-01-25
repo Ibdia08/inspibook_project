@@ -1,0 +1,38 @@
+{% extends 'InspiBook/base.html' %}
+
+{% block title %}Mon Tableau de Bord{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Mes Citations</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Citation</th>
+                <th>Auteur</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for citation in citations %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ citation.text }}</td>
+                <td>{{ citation.author }}</td>
+                <td>{{ citation.created_at|date:"d M Y" }}</td>
+                <td>
+                    <a href="/editer_citation.html" class="btn btn-warning btn-sm">Éditer</a>
+                    <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">Aucune citation trouvée.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'InspiBook/base.html' %}
+
+{% block title %}Supprimer une Citation{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Supprimer une Citation</h2>
+    <p>Êtes-vous sûr de vouloir supprimer cette citation ?</p>
+    <blockquote class="blockquote">
+        <p>"{{ citation.text }}"</p>
+        <footer class="blockquote-footer">{{ citation.author }}</footer>
+    </blockquote>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}

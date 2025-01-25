@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil - InspiBook</title>
+</head>
+<body>
+    <h1>Bienvenue sur InspiBook</h1>
+    <p>Créez un compte ou connectez-vous pour commencer.</p>
+    <a href="{% url 'signup' %}">Créer un compte</a> | <a href="{% url 'login' %}">Se connecter</a>
+    {% block content %}
+<h1 id="main-title" class="display-4">Bienvenue sur InspiBook</h1>
+<p class="lead">Collectionnez et partagez vos citations préférées.</p>
+<script>
+    gsap.from("#main-title", { duration: 1.5, opacity: 0, y: -50, ease: "power2.out" });
+</script>
+{% endblock %}
+
+</body>
+</html>

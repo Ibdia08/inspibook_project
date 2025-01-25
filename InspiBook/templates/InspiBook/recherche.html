@@ -1,0 +1,28 @@
+{% extends 'InspiBook/base.html' %}
+
+{% block title %}Recherche - InspiBook{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Recherche de Citations</h2>
+    <form method="get" action="{% url 'recherche' %}" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Rechercher une citation ou un auteur">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </div>
+    </form>
+
+    <ul class="list-group">
+        {% for citation in citations %}
+        <li class="list-group-item">
+            <blockquote class="blockquote">
+                <p>"{{ citation.text }}"</p>
+                <footer class="blockquote-footer">{{ citation.author }}</footer>
+            </blockquote>
+        </li>
+        {% empty %}
+        <li class="list-group-item">Aucune citation trouvée.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

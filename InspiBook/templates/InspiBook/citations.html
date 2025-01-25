@@ -1,0 +1,15 @@
+<h1>Liste des Citations</h1>
+<ul>
+    {% for citation in citations %}
+        <li>"{{ citation.text }}" - {{ citation.author }}</li>
+    {% empty %}
+        <li>Aucune citation disponible.</li>
+    {% endfor %}
+</ul>
+
+<h2>Ajouter une Citation</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Ajouter</button>
+</form>
