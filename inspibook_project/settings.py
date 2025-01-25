@@ -15,6 +15,25 @@ import os
 
 import dj_database_url
 
+import os
+from pathlib import Path
+
+# Chemin de base du projet Django
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# URL pour accéder aux fichiers statiques
+STATIC_URL = '/static/'
+
+# Chemin où collectstatic déposera les fichiers
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # type: ignore
+
+# Répertoire supplémentaire pour chercher des fichiers statiques
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'), # type: ignore
+]
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
